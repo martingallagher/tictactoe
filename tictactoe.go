@@ -131,6 +131,7 @@ func (t *TicTacToe) Move(player byte, x, y int) error {
 	return nil
 }
 
+// String fulfils the fmt.Stringer interface.
 func (t *TicTacToe) String() string {
 	var sb strings.Builder
 
