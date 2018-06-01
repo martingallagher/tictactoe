@@ -15,9 +15,10 @@ var (
 
 // TicTacToe represents a Tic Tac Toe board and game state data.
 type TicTacToe struct {
+	board  [3][3]byte
 	last   byte
 	winner byte
-	board  [3][3]byte
+	moves  int
 }
 
 // TicTacToe game & player constants.
@@ -96,6 +97,10 @@ func (t *TicTacToe) Winner() byte {
 		}
 	}
 
+	if t.moves == 9 {
+		return Draw
+	}
+
 	return None
 }
 
@@ -121,6 +126,7 @@ func (t *TicTacToe) Move(player byte, x, y int) error {
 
 	t.board[y][x] = player
 	t.last = player
+	t.moves++
 
 	return nil
 }
